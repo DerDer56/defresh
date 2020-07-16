@@ -4,7 +4,6 @@ function write(link) {
   if (window.XMLHttpRequest) {
     xhttp = new XMLHttpRequest();
   } else {
-    //for ie 5-6
     location.href = link;
   }
   xhttp.onreadystatechange = function() {
