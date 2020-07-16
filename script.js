@@ -1,5 +1,9 @@
-/* If you're feeling fancy you can add interactivity 
-    to your site with Javascript */
-
-// prints "hi" in the browser's dev tools console
-console.log("hi");
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    document.open();
+    document.write(this.responseText);
+  }
+};
+xhttp.open("GET", , true);
+xhttp.send();
