@@ -1,6 +1,6 @@
 var links = document.links;
 for (var num = 0; num < links.length; num++) {
-  if (this.href.indexOf(location.pathname) >= 0 && this.onclick != null) {
+  if (links[num].href.indexOf(location.pathname) >= 0 /*&& links[num].onclick != null*/) {
     links[num].onclick = function(e) {
       alert(this.href);
       e.preventDefault();
