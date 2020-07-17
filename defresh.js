@@ -27,10 +27,11 @@ for (var num = 0; num < links.length; num++) {
   if (
     links[num].href.indexOf(window.location.hostname) >= 0 &&
     links[num].href != null &&
-    links[num].onclick == null
+    links[num].onclick == null &&
+    links[num].target != "_blank"
   ) {
     links[num].onclick = function(e) {
-      if (pressedKeys["Control"] !== true) {
+      if (pressedKeys["Control"] != true) {
         e.preventDefault();
         window.history.pushState({ page: this.href }, "", this.href);
         write(this.href);
