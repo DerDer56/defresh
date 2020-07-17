@@ -1,6 +1,5 @@
 var xhttp;
 var links = document.links;
-
 function write(link) {
   if (window.XMLHttpRequest) {
     xhttp = new XMLHttpRequest();
@@ -8,7 +7,7 @@ function write(link) {
     window.location.href = link;
   }
   xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
+    if (this.readyState == 4) {
       document.open();
       document.write(this.responseText);
       document.close();
@@ -19,7 +18,7 @@ function write(link) {
 }
 for (var num = 0; num < links.length; num++) {
   if (
-    links[num].href.indexOf(window.location.pathname) >= 0 &&
+    links[num].href.indexOf(window.location.hostname) >= 0 &&
     links[num].href != null &&
     links[num].onclick == null
   ) {
