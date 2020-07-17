@@ -2,8 +2,8 @@ a.nav-link {
     display: flex;
     align-items: center;
   padding-left:40px!important;
+  padding-right:5px!important;
 }
 .navbar {
   overflow-x:scroll;
-  
 }
