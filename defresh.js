@@ -32,3 +32,14 @@ for (var num = 0; num < links.length; num++) {
 window.onpopstate = function() {
   write(window.location.pathname);
 };
+const is_key_down = (() => {
+    const state = {};
+
+    window.addEventListener('keyup', (e) => state[e.w] = false);
+    window.addEventListener('keydown', (e) => state[e.key] = true);
+
+    return (key) => state.hasOwnProperty(key) && state[key] || false;
+})();
+setInterval(function() {
+  alert(is_key_down["Control"]);
+}, 1000);
