@@ -1,9 +1,8 @@
-a.nav-link {
-    display: flex;
-    align-items: center;
-  padding-left:40px!important;
-  padding-right:5px!important;
+a.nav-link, a.navbar-brand {
+  display: flex;
+  align-items: center;
+  padding: 5px 30px !important;
 }
 .navbar {
-  overflow-x:scroll;
+  overflow-x: scroll;
 }

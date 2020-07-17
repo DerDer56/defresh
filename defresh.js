@@ -1,11 +1,11 @@
 var xhttp;
 var links = document.links;
-var pressedKeys = {};
+var pressed = {};
 window.onkeyup = function(e) {
-  pressedKeys[e.key] = undefined;
+  pressed[e.key] = undefined;
 };
 window.onkeydown = function(e) {
-  pressedKeys[e.key] = true;
+  pressed[e.key] = true;
 };
 function write(link) {
   if (window.XMLHttpRequest) {
@@ -31,7 +31,7 @@ for (var num = 0; num < links.length; num++) {
     links[num].target != "_blank"
   ) {
     links[num].onclick = function(e) {
-      if (pressedKeys["Control"] != true) {
+      if (pressed["Control"] != true && pressed["Shift"] != true) {
         e.preventDefault();
         window.history.pushState({ page: this.href }, "", this.href);
         write(this.href);
