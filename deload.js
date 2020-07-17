@@ -25,6 +25,7 @@ for (var num = 0; num < links.length; num++) {
     links[num].onclick = function(e) {
       e.preventDefault();
       window.history.pushState({ page: this.href }, "", this.href);
+      window.history.pushState({ path: this.href }, "", this.href);
       write(this.href);
     };
   }
