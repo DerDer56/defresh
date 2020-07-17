@@ -7,6 +7,7 @@ function write(link) {
     location.href = link;
   }
   xhttp.onreadystatechange = function() {
+    alert("hi");
     if (this.readyState == 4 && this.status == 200) {
       document.open();
       document.write(this.responseText);
