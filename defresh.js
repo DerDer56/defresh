@@ -1,5 +1,12 @@
 var xhttp;
 var links = document.links;
+var pressedKeys = {};
+window.onkeyup = function(e) {
+  pressedKeys[e.key] = false;
+};
+window.onkeydown = function(e) {
+  pressedKeys[e.key] = true;
+};
 function write(link) {
   if (window.XMLHttpRequest) {
     xhttp = new XMLHttpRequest();
@@ -23,23 +30,15 @@ for (var num = 0; num < links.length; num++) {
     links[num].onclick == null
   ) {
     links[num].onclick = function(e) {
-      e.preventDefault();
-      window.history.pushState({ page: this.href }, "", this.href);
-      write(this.href);
+      alert(pressedKeys["Control"]);
+      if (pressedKeys("Control") != true) {
+        e.preventDefault();
+        window.history.pushState({ page: this.href }, "", this.href);
+        write(this.href);
+      }
     };
   }
 }
 window.onpopstate = function() {
   write(window.location.pathname);
 };
-const is_key_down = (() => {
-    const state = {};
-
-    window.addEventListener('keyup', (e) => state[e.w] = false);
-    window.addEventListener('keydown', (e) => state[e.key] = true);
-
-    return (key) => state.hasOwnProperty(key) && state[key] || false;
-})();
-setInterval(function() {
-  alert(is_key_down["Control"]);
-}, 1000);
