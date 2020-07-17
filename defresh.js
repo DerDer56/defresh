@@ -2,7 +2,7 @@ var xhttp;
 var links = document.links;
 var pressedKeys = {};
 window.onkeyup = function(e) {
-  pressedKeys[e.key] = false;
+  pressedKeys[e.key] = undefined;
 };
 window.onkeydown = function(e) {
   pressedKeys[e.key] = true;
@@ -30,8 +30,7 @@ for (var num = 0; num < links.length; num++) {
     links[num].onclick == null
   ) {
     links[num].onclick = function(e) {
-      alert(pressedKeys["Control"]);
-      if (pressedKeys("Control") != true) {
+      if (pressedKeys["Control"] !== true) {
         e.preventDefault();
         window.history.pushState({ page: this.href }, "", this.href);
         write(this.href);
