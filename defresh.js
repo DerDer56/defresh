@@ -6,25 +6,20 @@ window.onkeyup = function(e) {
 window.onkeydown = function(e) {
   pressed[e.key] = true;
 };
+function push(link) {
+  window.history.pushState({ page: link }, "", link);
+}
 function write(link) {
   if (window.XMLHttpRequest) {
     var xhttp = new XMLHttpRequest();
+  } else {
+    window.location.href = link;
   }
   xhttp.onreadystatechange = function() {
-    if (
-      this.readyState == 4 &&
-      this.responseText.indexOf("defresh.js") > -1 &&
-      xhttp != undefined
-    ) {
+    if (this.readyState == 4 && this.responseText.indexOf("defresh.js") >= 0) {
       document.open();
       document.write(this.responseText);
       document.close();
-    }
-    if (
-      this.readyState != 4 ||
-      xhttp == undefined
-    ) {
-      window.location.href = link;
     }
   };
   xhttp.open("GET", link, true);
@@ -40,7 +35,7 @@ for (var num = 0; num < links.length; num++) {
     links[num].onclick = function(e) {
       if (pressed["Control"] != true && pressed["Shift"] != true) {
         e.preventDefault();
-        window.history.pushState({ page: this.href }, "", this.href);
+        push(this.href);
         write(this.href);
       }
     };
