@@ -9,19 +9,17 @@ window.onkeydown = function(e) {
 function push(link) {
   window.history.pushState({ page: link }, "", link);
 }
-function defresh(link, action) {
+function defresh(link) {
   if (window.XMLHttpRequest) {
     var xhttp = new XMLHttpRequest();
   } else {
     window.location.href = link;
   }
   xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.responseText.indexOf("defresh.js") >= 0) {
+    if (this.readyState == 4) {
       document.open();
       document.write(this.responseText);
       document.close();
-    } else {
-      alert('oops')
     }
   };
   xhttp.open("GET", link, true);
@@ -38,7 +36,7 @@ for (var num = 0; num < links.length; num++) {
       if (pressed["Control"] != true && pressed["Shift"] != true) {
         e.preventDefault();
         push(this.href);
-        window(this.href);
+        defresh(this.href);
       }
     };
   }
