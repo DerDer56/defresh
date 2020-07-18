@@ -13,13 +13,11 @@ function write(link) {
     window.location.href = link;
   }
   xhttp.onreadystatechange = function() {
-    if (this.readyState == 4) {
-      if (
-        this.status == 404 &&
-        this.responseText.indexOf("//defresh.glitch.me/defresh.js") <= -1
-      ) {
-        window.location.href = link;
-      }
+    if (
+      this.readyState == 4 
+      //&&
+      //this.responseText.indexOf("//defresh.glitch.me/defresh.js") > -1
+    ) {
       document.open();
       document.write(this.responseText);
       document.close();
