@@ -20,7 +20,10 @@ function write(link) {
       document.write(this.responseText);
       document.close();
     }
-    if (this.responseText.indexOf("defresh.js") == -1 || xhttp == undefined) {
+    if (
+      this.readyState != 4 ||
+      xhttp == undefined
+    ) {
       window.location.href = link;
     }
   };

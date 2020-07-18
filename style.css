@@ -3,7 +3,7 @@ a.nav-link,
   display: flex;
   align-items: center;
   padding: 5px 30px !important;
-  vertical-align: center !important;
+  vertical-align: middle !important;
 }
 .navbar {
   overflow-x: scroll !important;
