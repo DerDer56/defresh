@@ -9,7 +9,7 @@ window.onkeydown = function(e) {
 function push(link) {
   window.history.pushState({ page: link }, "", link);
 }
-function write(link) {
+function defresh(link, action) {
   if (window.XMLHttpRequest) {
     var xhttp = new XMLHttpRequest();
   } else {
@@ -20,6 +20,8 @@ function write(link) {
       document.open();
       document.write(this.responseText);
       document.close();
+    } else {
+      alert('oops')
     }
   };
   xhttp.open("GET", link, true);
@@ -36,11 +38,11 @@ for (var num = 0; num < links.length; num++) {
       if (pressed["Control"] != true && pressed["Shift"] != true) {
         e.preventDefault();
         push(this.href);
-        write(this.href);
+        window(this.href);
       }
     };
   }
 }
 window.onpopstate = function() {
-  write(window.location.pathname);
+  window(window.location.pathname);
 };
