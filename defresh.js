@@ -1,4 +1,3 @@
-var xhttp;
 var links = document.links;
 var pressed = {};
 window.onkeyup = function(e) {
@@ -8,22 +7,19 @@ window.onkeydown = function(e) {
   pressed[e.key] = true;
 };
 function write(link) {
-  if (window.XMLHttpRequest) {
-    xhttp = new XMLHttpRequest();
-  } else {
-    window.location.href = link;
-  }
+  var xhttp = new XMLHttpRequest();
+  window.location.href = link;
   xhttp.onreadystatechange = function() {
-    if (this.readyState == 4) {
-      if (
-        this.status == 404 &&
-        this.responseText.indexOf("//defresh.glitch.me/defresh.js") <= -1
-      ) {
-        window.location.href = link;
-      }
+    if (
+      this.readyState == 4 &&
+      window.XMLHttpRequest &&
+      this.responseText.indexOf("//defresh.glitch.me/defresh.js") > -1
+    ) {
       document.open();
       document.write(this.responseText);
       document.close();
+    } else {
+      window.location.href = link;
     }
   };
   xhttp.open("GET", link, true);
