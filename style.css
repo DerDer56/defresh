@@ -1,8 +1,18 @@
-a.nav-link, a.navbar-brand {
+a.nav-link,
+a.navbar-brand {
   display: flex;
   align-items: center;
   padding: 5px 30px !important;
 }
 .navbar {
   overflow-x: scroll;
+}
+body::-webkit-scrollbar {
+  width: 10px;
+}
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+body::-webkit-scrollbar-thumb {
+  background: #007bff;
 }
