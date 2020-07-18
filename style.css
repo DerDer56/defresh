@@ -1,18 +1,19 @@
 a.nav-link,
-a.navbar-brand {
+.navbar-brand {
   display: flex;
   align-items: center;
   padding: 5px 30px !important;
+  vertical-align: center !important;
 }
 .navbar {
-  overflow-x: scroll;
+  overflow-x: scroll !important;
 }
 body::-webkit-scrollbar {
-  width: 10px;
+  width: 10px !important;
 }
 body::-webkit-scrollbar-track {
-  background: transparent;
+  background: transparent !important;
 }
 body::-webkit-scrollbar-thumb {
-  background: #007bff;
+  background: #007bff !important;
 }
