@@ -1,6 +1,5 @@
 var xhttp;
 var links = document.links;
-var disallowed;
 var pressed = {};
 window.onkeyup = function(e) {
   pressed[e.key] = undefined;
@@ -15,7 +14,13 @@ function write(link) {
     window.location.href = link;
   }
   xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status != disallowed) {
+    if (this.readyState == 4) {
+      if (
+        this.status == 404 &&
+        this.responseText.indexOf("//defresh.glitch.me/defresh.js") <= -1
+      ) {
+        window.location.href = link;
+      }
       document.open();
       document.write(this.responseText);
       document.close();
