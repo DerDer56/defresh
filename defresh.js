@@ -9,18 +9,23 @@ window.onkeydown = function(e) {
 function write(link) {
   if (window.XMLHttpRequest) {
     var xhttp = new XMLHttpRequest();
-  } else {
-    window.location.href = link;
   }
   xhttp.onreadystatechange = function() {
     if (
-      this.readyState == 4 
-      //&&
-      //this.responseText.indexOf("//defresh.glitch.me/defresh.js") > -1
+      this.readyState == 4 &&
+      this.responseText.indexOf("defresh.js") > -1 &&
+      xhttp != undefined
     ) {
       document.open();
       document.write(this.responseText);
       document.close();
+    }
+    if (
+      this.readyState != 4 ||
+      this.responseText.indexOf("defresh.js") < 0 ||
+      xhttp == undefined
+    ) {
+      window.location.href = link;
     }
   };
   xhttp.open("GET", link, true);
