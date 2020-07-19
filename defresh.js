@@ -9,7 +9,7 @@ w.onkeydown = function(e) {
   p[e.key] = true;
 };
 function defresh(l, a) {
-  if (w.XMLHttpRequest) {
+  if (w.XMLHttpRequest && w.history) {
     var x = new XMLHttpRequest();
     x.onreadystatechange = function() {
       if (
