@@ -1,48 +1,50 @@
-var links = document.links;
-var pressed = {};
-window.onkeyup = function(e) {
-  pressed[e.key] = undefined;
+var d = document,
+  l = d.links,
+  p = {},
+  w = window;
+w.onkeyup = function(e) {
+  p[e.key] = undefined;
 };
-window.onkeydown = function(e) {
-  pressed[e.key] = true;
+w.onkeydown = function(e) {
+  p[e.key] = true;
 };
-function defresh(link, action) {
-  if (window.XMLHttpRequest) {
-    var xhttp = new XMLHttpRequest();
+function defresh(l, a) {
+  if (w.XMLHttpRequest) {
+    var x = new XMLHttpRequest();
   } else {
-    window.location.href = link;
+    w.location.href = l;
   }
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && link != null) {
-      if (action.toLowerCase() == "push") {
-        window.history.pushState({ page: link }, "", link);
+  x.onreadystatechange = function() {
+    if (this.readyState == 4 && l != null) {
+      if (a.toLowerCase() == "push") {
+        w.history.pushState({ page: l }, "", l);
       }
-      if (action.toLowerCase() == "replace") {
-        window.history.replaceState({ page: link }, "", link);
+      if (a.toLowerCase() == "replace") {
+        w.history.replaceState({ page: l }, "", l);
       }
-      document.open();
-      document.write(this.responseText);
-      document.close();
+      d.open();
+      d.write(this.responseText);
+      d.close();
     }
   };
-  xhttp.open("GET", link, true);
-  xhttp.send();
+  x.open("GET", l, true);
+  x.send();
 }
-for (var num = 0; num < links.length; num++) {
+for (var i = 0; i < l.length; i++) {
   if (
-    links[num].href.indexOf(window.location.hostname) >= 0 &&
-    links[num].href != null &&
-    links[num].onclick == null &&
-    links[num].target != "_blank"
+    l[i].href.indexOf(w.location.hostname) >= 0 &&
+    l[i].href != null &&
+    l[i].onclick == null &&
+    l[i].target != "_blank"
   ) {
-    links[num].onclick = function(e) {
-      if (pressed["Control"] != true && pressed["Shift"] != true) {
+    l[i].onclick = function(e) {
+      if (p["Control"] != true && p["Shift"] != true) {
         e.preventDefault();
         defresh(this.href, "push");
       }
     };
   }
 }
-window.onpopstate = function() {
-  defresh(window.location.pathname);
+w.onpopstate = function() {
+  defresh(w.location.pathname, "");
 };
