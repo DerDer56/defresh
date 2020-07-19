@@ -38,7 +38,8 @@ for (var i = 0; i < l.length; i++) {
     l[i].href.indexOf(w.location.hostname) >= 0 &&
     l[i].href != null &&
     l[i].onclick == null &&
-    l[i].target != "_blank"
+    l[i].target != "_blank" &&
+    l[i].target != "_parent"
   ) {
     l[i].onclick = function(e) {
       if (p["Control"] != true && p["Shift"] != true) {
