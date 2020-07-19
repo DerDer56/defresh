@@ -6,9 +6,6 @@ window.onkeyup = function(e) {
 window.onkeydown = function(e) {
   pressed[e.key] = true;
 };
-function push(link) {
-  window.history.pushState({ page: link }, "", link);
-}
 function defresh(link, action) {
   if (window.XMLHttpRequest) {
     var xhttp = new XMLHttpRequest();
@@ -16,9 +13,12 @@ function defresh(link, action) {
     window.location.href = link;
   }
   xhttp.onreadystatechange = function() {
-    if (this.readyState == 4) {
+    if (this.readyState == 4 && link != null) {
       if (action.toLowerCase() == "push") {
         window.history.pushState({ page: link }, "", link);
+      }
+      if (action.toLowerCase() == "replace") {
+        window.history.replaceState({ page: link }, "", link);
       }
       document.open();
       document.write(this.responseText);
@@ -38,12 +38,11 @@ for (var num = 0; num < links.length; num++) {
     links[num].onclick = function(e) {
       if (pressed["Control"] != true && pressed["Shift"] != true) {
         e.preventDefault();
-        push(this.href);
-        defresh(this.href);
+        defresh(this.href, "push");
       }
     };
   }
 }
 window.onpopstate = function() {
-  window(window.location.pathname);
+  defresh(window.location.pathname);
 };
