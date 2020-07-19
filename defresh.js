@@ -9,7 +9,7 @@ window.onkeydown = function(e) {
 function push(link) {
   window.history.pushState({ page: link }, "", link);
 }
-function defresh(link) {
+function defresh(link, action) {
   if (window.XMLHttpRequest) {
     var xhttp = new XMLHttpRequest();
   } else {
@@ -17,6 +17,9 @@ function defresh(link) {
   }
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4) {
+      if (action.toLowerCase() == "push") {
+        window.history.pushState({ page: link }, "", link);
+      }
       document.open();
       document.write(this.responseText);
       document.close();
