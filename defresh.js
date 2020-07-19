@@ -15,7 +15,7 @@ function defresh(l, a) {
     w.location.href = l;
   }
   x.onreadystatechange = function() {
-    if (this.readyState == 4 && l != null) {
+    if (this.readyState == 4 && this.responseText.indexOf("defresh.js") >= 0) {
       if (a.toLowerCase() == "push") {
         w.history.pushState({ page: l }, "", l);
       }
@@ -25,6 +25,9 @@ function defresh(l, a) {
       d.open();
       d.write(this.responseText);
       d.close();
+    }
+    if (this.readyState == 4 && this.responseText.indexOf("defresh.js") < 0) {
+      w.location.href = l;
     }
   };
   x.open("GET", l, true);

@@ -2,7 +2,7 @@ a.nav-link,
 .navbar-brand {
   display: flex;
   align-items: center;
-  padding: 5px 30px !important;
+  padding: 10px 40px !important;
   vertical-align: middle !important;
 }
 .navbar {
