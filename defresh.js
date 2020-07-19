@@ -11,27 +11,30 @@ w.onkeydown = function(e) {
 function defresh(l, a) {
   if (w.XMLHttpRequest) {
     var x = new XMLHttpRequest();
+    x.onreadystatechange = function() {
+      if (
+        this.readyState == 4 &&
+        this.responseText.indexOf("defresh.js") >= 0
+      ) {
+        if (a.toLowerCase() == "push") {
+          w.history.pushState({ page: l }, "", l);
+        }
+        if (a.toLowerCase() == "replace") {
+          w.history.replaceState({ page: l }, "", l);
+        }
+        d.open();
+        d.write(this.responseText);
+        d.close();
+      }
+      if (this.readyState == 4 && this.responseText.indexOf("defresh.js") < 0) {
+        w.location.href = l;
+      }
+    };
+    x.open("GET", l, true);
+    x.send();
   } else {
     w.location.href = l;
   }
-  x.onreadystatechange = function() {
-    if (this.readyState == 4 && this.responseText.indexOf("defresh.js") >= 0) {
-      if (a.toLowerCase() == "push") {
-        w.history.pushState({ page: l }, "", l);
-      }
-      if (a.toLowerCase() == "replace") {
-        w.history.replaceState({ page: l }, "", l);
-      }
-      d.open();
-      d.write(this.responseText);
-      d.close();
-    }
-    if (this.readyState == 4 && this.responseText.indexOf("defresh.js") < 0) {
-      w.location.href = l;
-    }
-  };
-  x.open("GET", l, true);
-  x.send();
 }
 for (var i = 0; i < l.length; i++) {
   if (
