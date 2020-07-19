@@ -2,7 +2,7 @@ a.nav-link,
 .navbar-brand {
   display: flex;
   align-items: center;
-  padding: 5px 15px !important;
+  padding: 5px 40px !important;
 }
 .navbar {
   overflow-x: scroll !important;
@@ -19,4 +19,7 @@ body::-webkit-scrollbar-thumb {
 iframe, code {
   background-color:white !important; 
   padding:25px;
+}
+hr {
+  color:white;
 }
