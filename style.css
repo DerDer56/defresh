@@ -2,7 +2,7 @@ a.nav-link,
 .navbar-brand {
   display: flex;
   align-items: center;
-  padding: 10px 40px !important;
+  padding: 5px 15px !important;
 }
 .navbar {
   overflow-x: scroll !important;
