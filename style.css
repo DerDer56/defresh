@@ -9,7 +9,6 @@ a.nav-link,
 }
 body {
   overflow-x: hidden !important;
-  word-break: break-word !important;
 }
 body::-webkit-scrollbar {
   width: 10px !important;
