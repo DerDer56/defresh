@@ -18,11 +18,13 @@ function defresh(l, a) {
   }
   x.onreadystatechange = function() {
     if (this.readyState == 4 && this.responseText.indexOf("defresh.js") >= 0) {
+      if (window.history) {
       if (a.toLowerCase() == "push" && window.history) {
         w.history.pushState({ page: l }, "", l);
       }
       if (a.toLowerCase() == "replace" && window.history) {
         w.history.replaceState({ page: l }, "", l);
+      }
       }
       d.open();
       d.write(this.responseText);
