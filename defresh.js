@@ -14,7 +14,7 @@ function defresh(r, a) {
   if (window.XMLHttpRequest) {
     x = new XMLHttpRequest();
   } else {
-    x = new ActiveXObject("Microsoft.XMLHTTP");
+    x = new d.ActiveXObject("Microsoft.XMLHTTP");
   }
   x.onreadystatechange = function() {
     if (this.readyState == 4 && this.responseText.indexOf("defresh.js") >= 0) {
@@ -48,7 +48,7 @@ for (var i = 0; i < l.length; i++) {
     l[i].target != "_parent"
   ) {
     l[i].onclick = function(e) {
-      if (p.Control != true && p.Shift != true) {
+      if (p["Control"] != true && p["Shift"] != true) {
         e.preventDefault();
         defresh(this.href, "push");
       }
