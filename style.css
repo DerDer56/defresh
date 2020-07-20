@@ -21,11 +21,13 @@ iframe,
   background-color: white !important;
   padding: 25px;
 }
-code {
+code:not(.prettyprint) {
   background-color: white !important;
   padding: 5px;
+  margin:0px 10px !important;
 }
 hr {
   border-color: white !important;
   border-width:5px;
+  
 }

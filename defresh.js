@@ -1,4 +1,5 @@
 var d = document,
+  ActiveXObject,
   l = d.links,
   p = {},
   w = window;
@@ -10,7 +11,11 @@ w.onkeydown = function(e) {
 };
 function defresh(l, a) {
   if (w.XMLHttpRequest && w.history) {
-    var x = new XMLHttpRequest();
+    if (window.XMLHttpRequest) {
+      var x = new XMLHttpRequest();
+    } else {
+      var x = new ActiveXObject("Microsoft.XMLHTTP");
+    }
     x.onreadystatechange = function() {
       if (
         this.readyState == 4 &&

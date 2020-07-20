@@ -24,10 +24,14 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
     />
     <link rel="stylesheet" href="/style.css" />
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
   </head>
   <body class="bg-secondary">
     <nav class="navbar navbar-expand bg-dark sticky-top navbar-dark">
-      <div class="container-fluid">
+      <div class="container">
         <a class="navbar-brand" href="/">
           <img
             src="https://cdn.glitch.com/bea0e6fc-51d7-4c09-9146-1c05b3793bfd%2F0ea65ccf-7513-404e-8ad5-fd044d5db2ca.image.png"
@@ -58,8 +62,10 @@
               >&nbsp;&nbsp;Tutorials</a
             >
           </li>
+          <!--
         </ul>
         <ul class="nav navbar-nav navbar-right">
+-->
           <li class="nav-item">
             <a class="text-primary nav-link" href="/about/">
               <span class="material-icons"> info </span>&nbsp;&nbsp;About</a
@@ -130,7 +136,8 @@
       </div>
       <br /><br /><br /><br />
       <hr />
-    </div><div class="container-fluid col-lg-6 p-5">
+    </div>
+    <div class="container-fluid col-lg-6 p-5">
       <h1 class="text-white display-3">Tutorials</h1>
       <h2 class="text-white mb-5">
         You can use defresh in your site's <code>.js</code> files with the
