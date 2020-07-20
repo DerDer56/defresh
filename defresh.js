@@ -17,7 +17,10 @@ function defresh(r, a) {
     x = new d.ActiveXObject("Microsoft.XMLHTTP");
   }
   x.onreadystatechange = function() {
-    if (this.readyState == 4 && this.responseText.indexOf("defresh.js") >= 0) {
+    if (
+      this.readyState == 4 &&
+      this.responseText.indexOf("defresh" + unescape("%2E%6A%73")) >= 0
+    ) {
       if (a.toLowerCase() == "push" && window.history) {
         w.history.pushState({ page: r }, "", r);
       }
@@ -28,7 +31,10 @@ function defresh(r, a) {
       d.write(this.responseText);
       d.close();
     }
-    if (this.readyState == 4 && this.responseText.indexOf("defresh.js") < 0) {
+    if (
+      this.readyState == 4 &&
+      this.responseText.indexOf("defresh" + unescape("%2E%6A%73")) < 0
+    ) {
       if (a.toLowerCase() == "replace") {
         w.location.replace(r);
       } else {
@@ -45,8 +51,7 @@ for (var i = 0; i < l.length; i++) {
     l[i].href != null &&
     l[i].onclick == null &&
     l[i].target != "_blank" &&
-    l[i].target != "_parent" &&
-    l[i].download == null
+    l[i].target != "_parent"
   ) {
     l[i].onclick = function(e) {
       if (p["Control"] != true && p["Shift"] != true) {
