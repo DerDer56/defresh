@@ -45,5 +45,7 @@ input, .btn {
   font-size: 2rem !important;
 }
 input {
+  padding:5px;
+  text-align:center;
   width: 100% !important;
 }

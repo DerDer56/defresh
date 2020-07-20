@@ -15,6 +15,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
     />
+    <script src="./script.js" defer></script>
     <link rel="stylesheet" href="/style.css" />
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -66,11 +67,18 @@
     <div class="container-fluid col-lg-6 p-5">
       <h1 class="text-white display-3">More</h1>
       <h2 class="text-white mb-5">
-        Write either "Cheese" or "Pepperoni". If you type anything else you will be redirected back:
+        Write either "Cheese" or "Pepperoni". If you type anything else you will
+        be redirected back:
       </h2>
       <div>
-        <input class="d-block" />
-        <button onclick="enter();" class="btn btn-block btn-primary p-2">
+        <input
+          class="d-block"
+          id="input"
+          maxlength="9"
+          autocomplete="off"
+          type="text"
+        />
+        <button onclick="enter()" class="btn btn-block btn-primary p-2">
           Enter
         </button>
       </div>
