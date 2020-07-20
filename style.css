@@ -9,6 +9,10 @@ a.nav-link,
 }
 body {
   overflow-x: hidden !important;
+  bottom-padding: 20px !important;
+}
+.navbar::-webkit-scrollbar {
+  display: none !important;
 }
 body::-webkit-scrollbar {
   width: 10px !important;
@@ -26,10 +30,13 @@ iframe,
 }
 code:not(.prettyprint) {
   background-color: white !important;
-  padding: 5px;
+  padding: 3px;
   margin: 0px 10px !important;
 }
 hr {
   border-color: white !important;
   border-width: 5px;
+}
+.btn {
+  font-size: inherit !important;
 }
