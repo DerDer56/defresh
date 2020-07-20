@@ -10,6 +10,10 @@ a.nav-link,
 body {
   overflow-x: hidden !important;
   bottom-padding: 20px !important;
+  overflow-y: overlay;
+}
+body:not(.navbar) {
+  word-break: break-word;
 }
 .navbar::-webkit-scrollbar {
   display: none !important;
@@ -38,5 +42,5 @@ hr {
   border-width: 5px;
 }
 .btn {
-  font-size: inherit !important;
+  font-size: 2rem !important;
 }
