@@ -7,6 +7,10 @@ a.nav-link,
 .navbar {
   overflow-x: scroll !important;
 }
+body {
+  overflow-x: hidden !important;
+  word-break: break-word !important;
+}
 body::-webkit-scrollbar {
   width: 10px !important;
 }
@@ -24,10 +28,9 @@ iframe,
 code:not(.prettyprint) {
   background-color: white !important;
   padding: 5px;
-  margin:0px 10px !important;
+  margin: 0px 10px !important;
 }
 hr {
   border-color: white !important;
-  border-width:5px;
-  
+  border-width: 5px;
 }
