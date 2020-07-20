@@ -69,9 +69,10 @@
       </div>
     </nav>
     <div class="container-fluid col-lg-6 p-5">
-      <h1 class="text-white display-4">Defresh</h1>
+      <h1 class="text-white display-3">Defresh</h1>
       <h2 class="text-white mb-5">
-        Cut your site's link load speed time in half with 1 line of code
+        Cut your site's link load speed time in half with 1
+        <code>&lt;script&gt;</code> tag
       </h2>
       <div>
         <code class="prettyprint d-block">
@@ -80,7 +81,8 @@
         </code>
         <a href="/start/" class="btn btn-block btn-primary p-2">Get V1</a>
       </div>
-      <hr class="text-white" />
+      <br /><br /><br /><br />
+      <hr />
     </div>
     <div class="container-fluid col-lg-6 p-5">
       <h1 class="text-white display-3">Demo</h1>
@@ -100,24 +102,59 @@
           >Full Screen</a
         >
       </div>
-    </div><div class="container-fluid col-lg-6 p-5">
-      <h1 class="text-white display-4">Tutorials</h1>
+      <br /><br /><br /><br />
+      <hr />
+    </div>
+    <div class="container-fluid col-lg-6 p-5">
+      <h1 class="text-white display-3">Tutorials</h1>
       <h2 class="text-white mb-5">
-        See an example of a site using Defresh quickly and effectively
+        You can use defresh in your site's <code>.js</code> files with the
+        <code>defresh()</code> function:
       </h2>
-      <div class="embed-responsive embed-responsive-16by9">
-        <iframe
-          src="/demo/"
-          class="d-block embed-responsive-item"
-          frameborder="0"
-        >
-        </iframe>
+      <div>
+        <code class="prettyprint d-block">
+          <s>location.href = '/page';</s><br />
+          defresh('/page', 'push');
+          <br /><br />
+          <s>location.replace('/page');</s><br />
+          defresh('/page', 'replace');
+          <br /><br />
+          <s>document.write(this.responseText);</s><br />
+          defresh('/page', 'none');
+        </code>
       </div>
       <div>
         <a target="_blank" href="/demo/" class="btn btn-block btn-primary p-2"
           >More</a
         >
       </div>
+      <br /><br /><br /><br />
+      <hr />
+    </div><div class="container-fluid col-lg-6 p-5">
+      <h1 class="text-white display-3">Tutorials</h1>
+      <h2 class="text-white mb-5">
+        You can use defresh in your site's <code>.js</code> files with the
+        <code>defresh()</code> function:
+      </h2>
+      <div>
+        <code class="prettyprint d-block">
+          <s>location.href = '/page';</s><br />
+          defresh('/page', 'push');
+          <br /><br />
+          <s>location.replace('/page');</s><br />
+          defresh('/page', 'replace');
+          <br /><br />
+          <s>document.write(this.responseText);</s><br />
+          defresh('/page', 'none');
+        </code>
+      </div>
+      <div>
+        <a target="_blank" href="/demo/" class="btn btn-block btn-primary p-2"
+          >More</a
+        >
+      </div>
+      <br /><br /><br /><br />
+      <hr />
     </div>
   </body>
 </html>

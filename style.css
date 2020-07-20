@@ -16,10 +16,16 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background: #007bff !important;
 }
-iframe, code {
-  background-color:white !important; 
-  padding:25px;
+iframe,
+.prettyprint {
+  background-color: white !important;
+  padding: 25px;
+}
+code {
+  background-color: white !important;
+  padding: 5px;
 }
 hr {
-  color:white;
+  border-color: white !important;
+  border-width:5px;
 }
