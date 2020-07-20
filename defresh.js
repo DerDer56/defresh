@@ -1,5 +1,6 @@
 var d = document,
   ActiveXObject,
+  x,
   l = d.links,
   p = {},
   w = window;
@@ -10,21 +11,20 @@ w.onkeydown = function(e) {
   p[e.key] = true;
 };
 function defresh(l, a) {
-  if (w.XMLHttpRequest && w.history) {
     if (window.XMLHttpRequest) {
-      var x = new XMLHttpRequest();
+      x = new XMLHttpRequest();
     } else {
-      var x = new ActiveXObject("Microsoft.XMLHTTP");
+      x = new ActiveXObject("Microsoft.XMLHTTP");
     }
     x.onreadystatechange = function() {
       if (
         this.readyState == 4 &&
         this.responseText.indexOf("defresh.js") >= 0
       ) {
-        if (a.toLowerCase() == "push") {
+        if (a.toLowerCase() == "push" && window.history) {
           w.history.pushState({ page: l }, "", l);
         }
-        if (a.toLowerCase() == "replace") {
+        if (a.toLowerCase() == "replace" && window.history) {
           w.history.replaceState({ page: l }, "", l);
         }
         d.open();
@@ -37,9 +37,6 @@ function defresh(l, a) {
     };
     x.open("GET", l, true);
     x.send();
-  } else {
-    w.location.href = l;
-  }
 }
 for (var i = 0; i < l.length; i++) {
   if (
