@@ -41,6 +41,9 @@ hr {
   border-color: white !important;
   border-width: 5px;
 }
-.btn {
+input, .btn {
   font-size: 2rem !important;
+}
+input {
+  width: 100% !important;
 }

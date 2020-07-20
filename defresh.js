@@ -46,7 +46,10 @@ for (var i = 0; i < l.length; i++) {
     l[i].onclick == null &&
     l[i].target != "_blank" &&
     l[i].target != "_parent" &&
-    l[i].href.indexOf(".js") < 0
+    l[i].href.indexOf(".js") < 0 &&
+    l[i].href.indexOf(".css") < 0 &&
+    l[i].href.indexOf(".txt") < 0 &&
+    l[i].href.indexOf(".py") < 0
   ) {
     l[i].onclick = function(e) {
       if (p["Control"] != true && p["Shift"] != true) {
