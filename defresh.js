@@ -48,7 +48,7 @@ for (var i = 0; i < l.length; i++) {
     l[i].target != "_parent"
   ) {
     l[i].onclick = function(e) {
-      if (p.Control != 1 && p.Shift != 1) {
+      if (p.Control != true && p.Shift != true) {
         e.preventDefault();
         defresh(this.href, "push");
       }
