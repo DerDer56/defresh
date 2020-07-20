@@ -29,7 +29,6 @@ function defresh(r, a) {
       d.close();
     }
     if (this.readyState == 4 && this.responseText.indexOf("defresh.js") < 0) {
-     
       if (a.toLowerCase() == "replace") {
         w.location.replace(r);
       } else {
@@ -37,7 +36,7 @@ function defresh(r, a) {
       }
     }
   };
-  x.open("GET", l + "#" + Date.now, true);
+  x.open("GET", r + "#" + Date.now, true);
   x.send();
 }
 for (var i = 0; i < l.length; i++) {
@@ -49,7 +48,7 @@ for (var i = 0; i < l.length; i++) {
     l[i].target != "_parent"
   ) {
     l[i].onclick = function(e) {
-      if (p["Control"] != true && p["Shift"] != true) {
+      if (p.Control != 1 && p.Shift != 1) {
         e.preventDefault();
         defresh(this.href, "push");
       }
