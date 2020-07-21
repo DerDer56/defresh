@@ -41,11 +41,14 @@ hr {
   border-color: white !important;
   border-width: 5px;
 }
-input, .btn {
+select,
+input,
+.btn {
   font-size: 2rem !important;
 }
+select,
 input {
-  padding:5px;
-  text-align:center;
+  padding: 5px;
+  text-align: center;
   width: 100% !important;
 }
