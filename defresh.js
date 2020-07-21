@@ -52,7 +52,7 @@ function defresh(r, a) {
       d.close();
     }
   };
-  x.open("GET", r + "#" + Date.now, true);
+  x.open("GET", r + "#" + Date.now(), true);
   x.send();
 }
 setInterval(function() {
