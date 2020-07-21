@@ -24,16 +24,22 @@ function defresh(r, a) {
       if (a.toLowerCase() == "replace" && window.history) {
         w.history.replaceState({ page: r }, "", r);
       }
-      d.open();
-      d.write(this.responseText);
-      d.close();
+      o(this.responseText);
     }
     if (this.readyState == 4 && this.responseText.indexOf("defresh.js") < 0) {
       if (a.toLowerCase() == "replace") {
         w.location.replace(r);
-      } else {
-        w.location.href = r;
       }
+      if (a.toLowerCase() == "push") {
+        w.location.href = r;
+      } else {
+        o(this.responseText);
+      }
+    }
+    function o(e) {
+      d.open();
+      d.write(e);
+      d.close();
     }
   };
   x.open("GET", r + "#" + Date.now, true);
@@ -48,8 +54,7 @@ for (var i = 0; i < l.length; i++) {
     l[i].target != "_parent" &&
     l[i].href.indexOf(".js") < 0 &&
     l[i].href.indexOf(".css") < 0 &&
-    l[i].href.indexOf(".txt") < 0 &&
-    l[i].href.indexOf(".py") < 0
+    l[i].href.indexOf(".txt") < 0
   ) {
     l[i].onclick = function(e) {
       if (p["Control"] != true && p["Shift"] != true) {

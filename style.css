@@ -52,8 +52,12 @@ input {
   text-align: center;
   width: 100% !important;
 }
+.navbar-brand {
+  filter: brightness(0%) invert(33%) sepia(47%) saturate(6423%) hue-rotate(202deg) brightness(106%) contrast(103%);
+  /*  https://codepen.io/sosuke/pen/Pjoqqp  */
+}
 .disabled-logo {
   filter: brightness(0%) invert(23%) sepia(52%) saturate(4566%)
-    hue-rotate(341deg) brightness(95%) contrast(80%);
+    hue-rotate(341deg) brightness(95%) contrast(80%) !important;
   /*  https://codepen.io/sosuke/pen/Pjoqqp  */
 }

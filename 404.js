@@ -1,1 +1,4 @@
-document.getElementById("path").innerHTML = window.location.pathname.split("?")[0].split("#")[0];
+document.getElementById("path").innerHTML = window.location.pathname
+  .split("?")
+  .pop()
+  .split("#")[0];
