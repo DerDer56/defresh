@@ -1,5 +1,9 @@
 {
   "name": "defresh",
+  "description": "Cut your site's link load speed time in half with 1 <script> tag",
+  "keywords": [
+    "Defresh"
+  ],
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
