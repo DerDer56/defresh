@@ -13,11 +13,13 @@ w.onkeydown = function(e) {
 function defresh(r, a) {
   if (window.XMLHttpRequest) {
     x = new XMLHttpRequest();
-  } else {
-    x = new d.ActiveXObject("Microsoft.XMLHTTP");
   }
   x.onreadystatechange = function() {
-    if (this.readyState == 4 && this.responseText.indexOf("defresh.js") >= 0) {
+    if (
+      this.readyState == 4 &&
+      this.responseText.indexOf("defresh.js") >= 0 &&
+      r != w.location.pathame
+    ) {
       if (a.toLowerCase() == "push" && window.history) {
         w.history.pushState({ page: r }, "", r);
       }
@@ -26,7 +28,10 @@ function defresh(r, a) {
       }
       o(this.responseText);
     }
-    if (this.readyState == 4 && this.responseText.indexOf("defresh.js") < 0) {
+    if (
+      (this.readyState == 4 && this.responseText.indexOf("defresh.js") < 0) ||
+      !window.XMLHttpRequest
+    ) {
       if (a.toLowerCase() == "replace") {
         w.location.replace(r);
       }
@@ -37,6 +42,10 @@ function defresh(r, a) {
       }
     }
     function o(e) {
+      if ("scrollRestoration" in w.history) {
+        w.history.scrollRestoration = "manual";
+      }
+      w.scrollTo(0, 0);
       d.open();
       d.write(e);
       d.close();
@@ -54,10 +63,16 @@ for (var i = 0; i < l.length; i++) {
     l[i].target != "_parent" &&
     l[i].href.indexOf(".js") < 0 &&
     l[i].href.indexOf(".css") < 0 &&
-    l[i].href.indexOf(".txt") < 0
+    l[i].href.indexOf(".txt") < 0 &&
+    !l[i].hasAttribute("download")
   ) {
     l[i].onclick = function(e) {
-      if (p["Control"] != true && p["Shift"] != true && p["Meta"] != true) {
+      if (
+        p["Control"] != true &&
+        p["Shift"] != true &&
+        p["Meta"] != true &&
+        this.href.charAt(0) != "#"
+      ) {
         e.preventDefault();
         defresh(this.href, "push");
       }
