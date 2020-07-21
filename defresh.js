@@ -57,7 +57,7 @@ for (var i = 0; i < l.length; i++) {
     l[i].href.indexOf(".txt") < 0
   ) {
     l[i].onclick = function(e) {
-      if (p["Control"] != true && p["Shift"] != true) {
+      if (p["Control"] != true && p["Shift"] != true && p["Meta"] != true) {
         e.preventDefault();
         defresh(this.href, "push");
       }
