@@ -53,5 +53,7 @@ input {
   width: 100% !important;
 }
 .disabled-logo {
-  filter: sepia() saturate(10000%) hue-rotate(30deg);
+  filter: brightness(0%) invert(23%) sepia(52%) saturate(4566%)
+    hue-rotate(341deg) brightness(95%) contrast(80%);
+  /*  https://codepen.io/sosuke/pen/Pjoqqp  */
 }
