@@ -11,7 +11,7 @@ w.onkeydown = function(e) {
   p[e.key] = true;
 };
 function defresh(r, a) {
-  if (window.XMLHttpRequest) {
+  if (window.XMLHttpRequest && window.history) {
     x = new XMLHttpRequest();
   }
   x.onreadystatechange = function() {
@@ -20,17 +20,18 @@ function defresh(r, a) {
       this.responseText.indexOf("defresh.js") >= 0 &&
       r != w.location.pathame
     ) {
-      if (a.toLowerCase() == "push" && window.history) {
+      if (a.toLowerCase() == "push") {
         w.history.pushState({ page: r }, "", r);
       }
-      if (a.toLowerCase() == "replace" && window.history) {
+      if (a.toLowerCase() == "replace") {
         w.history.replaceState({ page: r }, "", r);
       }
       o(this.responseText);
     }
     if (
       (this.readyState == 4 && this.responseText.indexOf("defresh.js") < 0) ||
-      !window.XMLHttpRequest
+      !window.XMLHttpRequest ||
+      !window.history
     ) {
       if (a.toLowerCase() == "replace") {
         w.location.replace(r);
@@ -54,31 +55,33 @@ function defresh(r, a) {
   x.open("GET", r + "#" + Date.now, true);
   x.send();
 }
-for (var i = 0; i < l.length; i++) {
-  if (
-    l[i].href.indexOf(w.location.hostname) >= 0 &&
-    l[i].href != null &&
-    l[i].onclick == null &&
-    l[i].target != "_blank" &&
-    l[i].target != "_parent" &&
-    l[i].href.indexOf(".js") < 0 &&
-    l[i].href.indexOf(".css") < 0 &&
-    l[i].href.indexOf(".txt") < 0 &&
-    !l[i].hasAttribute("download")
-  ) {
-    l[i].onclick = function(e) {
-      if (
-        p["Control"] != true &&
-        p["Shift"] != true &&
-        p["Meta"] != true &&
-        this.href.charAt(0) != "#"
-      ) {
-        e.preventDefault();
-        defresh(this.href, "push");
-      }
-    };
+setInterval(function() {
+  for (var i = 0; i < l.length; i++) {
+    if (
+      l[i].href.indexOf(w.location.hostname) >= 0 &&
+      l[i].href != null &&
+      l[i].onclick == null &&
+      l[i].target != "_blank" &&
+      l[i].target != "_parent" &&
+      l[i].href.indexOf(".js") < 0 &&
+      l[i].href.indexOf(".css") < 0 &&
+      l[i].href.indexOf(".txt") < 0 &&
+      !l[i].hasAttribute("download")
+    ) {
+      l[i].onclick = function(e) {
+        if (
+          p["Control"] != true &&
+          p["Shift"] != true &&
+          p["Meta"] != true &&
+          this.href.charAt(0) != "#"
+        ) {
+          e.preventDefault();
+          defresh(this.href, "push");
+        }
+      };
+    }
   }
-}
+}, 500);
 w.onpopstate = function() {
   defresh(w.location.pathname, "none");
 };
