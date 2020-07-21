@@ -52,3 +52,6 @@ input {
   text-align: center;
   width: 100% !important;
 }
+.disabled-logo {
+  filter: sepia() saturate(10000%) hue-rotate(30deg);
+}

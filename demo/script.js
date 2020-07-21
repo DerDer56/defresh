@@ -14,6 +14,6 @@ function enter() {
   } else if (x == "cheese") {
     defresh("./cheese.html", y);
   } else {
-    defresh("/", y);
+    defresh("/demo/", y);
   }
 }
